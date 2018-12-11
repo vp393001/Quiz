@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    int score;
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             score++;
 
         EditText q2 = findViewById(R.id.q2);
-        if (q2.getText().toString().equals("5"))
+        if (q2.getText().toString().trim().equals("5"))
             score++;
 
         CheckBox q31 = findViewById(R.id.q31);
@@ -40,10 +40,15 @@ public class MainActivity extends AppCompatActivity {
             score++;
 
         EditText q5 = findViewById(R.id.q5);
-        if (q5.getText().toString().equals("2"))
+        if (q5.getText().toString().trim().equals("2"))
             score++;
 
-        Toast.makeText(this, "Your score is: " + score, Toast.LENGTH_SHORT).show();
+        if (score == 5) {
+            Toast.makeText(this, "Excellent! All answers are correct!!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Your score is: " + score, Toast.LENGTH_SHORT).show();
+        }
+
         score = 0;
     }
 
